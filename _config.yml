@@ -15,13 +15,13 @@ redcarpet:
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : liberize's blog
+title : deepnighttwo's blog
 tagline: Free as the wind.
 author :
-  name : liberize
-  email : liberize@gmail.com
-  github : liberize
-  twitter : liberize
+  name : deepnighttwo
+  email : deepnighttwo@gmail.com
+  github : deepnighttwo
+  twitter : deepnighttwo
   feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
@@ -32,8 +32,8 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://liberize.me
-cdn_url : http://liberize.u.qiniudn.com
+production_url : http://deepnighttwo.com
+#cdn_url : http://deepnighttwo.u.qiniudn.com
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
@@ -93,33 +93,30 @@ JB :
   comments :
     provider : duoshuo
     duoshuo :
-      short_name : liberize
-    disqus :
-      short_name : liberize
-    livefyre :
-      site_id : 123
-    intensedebate :
-      account : 123abc
-    facebook :
-      appid : 123
-      num_posts: 5
-      width: 580
-      colorscheme: light
+      short_name : deepnighttwo
+#    disqus :
+#      short_name : deepnighttwo
+#    livefyre :
+#      site_id : 123
+#    intensedebate :
+#      account : 123abc
+#    facebook :
+#      appid : 123
+#      num_posts: 5
+#      width: 580
+#      colorscheme: light
 
   # Settings for analytics helper
   # Set 'provider' to the analytics provider you want to use.
   # Set 'provider' to false to turn analytics off globally.
   #        
-  analytics :
-    provider : baidu
-    baidu :
-      tracking_id : 'a7c01c4b55f06cf1df9cabb9b18a65a3' 
+  #analytics :
     google : 
-      tracking_id : 'UA-41189818-1'
-    getclicky :
-      site_id : 
-    mixpanel :
-      token : '_MIXPANEL_TOKEN_'
+      tracking_id : 'UA-6843258-4'
+  #  getclicky :
+  #    site_id : 
+  #  mixpanel :
+  #    token : '_MIXPANEL_TOKEN_'
 
   # Settings for sharing helper. 
   # Sharing is for things like tweet, plusone, like, reddit buttons etc.

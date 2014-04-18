@@ -1,1 +1,1 @@
-Sitemap: http://liberize.me/sitemap.txt
+Sitemap: http://deepnighttwo.github.io/sitemap.txt
