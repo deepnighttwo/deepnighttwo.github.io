@@ -94,8 +94,8 @@ JB :
     provider : duoshuo
     duoshuo :
       short_name : deepnighttwo
-#    disqus :
-#      short_name : deepnighttwo
+    disqus :
+      short_name : deepnighttwo
 #    livefyre :
 #      site_id : 123
 #    intensedebate :
