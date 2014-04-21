@@ -18,7 +18,7 @@ tags: [git]
 
 上网比较麻烦。因为是在公司内部，如果走网卡桥接，公司内部路由器不给上。所以走NAT，这时候走NAT无法从宿主机ssh连过去，这时候就要设置一个端口转发即可
 
-![nat-redirect]({{ IMAGE_PATH }}/nat-redirect.jpg)
+![nat-redirect]({{ IMAGE_PATH }}/nat-port-redirect.jpg)
 
 默认ssh端口是22，防火墙是开了的。如果是别的端口就可能需要开防火墙了。iptables防火墙设置看[这里](http://my.oschina.net/blindcat/blog/169657)
 
