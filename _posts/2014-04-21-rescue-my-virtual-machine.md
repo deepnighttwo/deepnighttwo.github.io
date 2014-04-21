@@ -8,6 +8,8 @@ tags: [git]
 ---
 {% include JB/setup %}
 
+{{ toc }}
+
 因为需要编译spark&shark，唤醒了沉睡许久的虚拟机。用的是VirtualBox，系统装的是centos6。唤醒之路记录一下……
 
 ### 密码
@@ -24,9 +26,15 @@ tags: [git]
 
 开端口映射是不需要重启虚机的。
 
+### yum repo
 
+不知道为什么，yum 无法安装软件了。报错说
 
+> removing mirrorlist with no valid mirrors: /var/cache/yum/x86_64/6/base/mirrorlist.txt
 
+查了一下是/var/cache/yum/x86_64/6/base/mirrorlist.txt这个文件找不到，这个里面放的是mirror list。创建出来就可以了，具体的内容可以参照[这里](http://gardenyuan.iteye.com/blog/1498032)
 
+除了这个文件，还有一个/var/cache/yum/x86_64/6/update/mirrorlist.txt，也需要一起改一下。
 
+到这里基本虚机就复活了～
 
