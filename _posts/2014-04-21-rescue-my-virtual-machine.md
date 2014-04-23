@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "虚机复活记"
-keywords: ["git pages"]
-description: "hehe"
-category: misc
-tags: [git]
+keywords: ["linux,CentOS,virtual-box"]
+description: ""
+category: linux
+tags: [linux, CentOS, virtual-box]
 ---
 {% include JB/setup %}
 
@@ -30,7 +30,9 @@ tags: [git]
 
 不知道为什么，yum 无法安装软件了。报错说
 
-> removing mirrorlist with no valid mirrors: /var/cache/yum/x86_64/6/base/mirrorlist.txt
+```bash
+removing mirrorlist with no valid mirrors: /var/cache/yum/x86_64/6/base/mirrorlist.txt
+```
 
 查了一下是/var/cache/yum/x86_64/6/base/mirrorlist.txt这个文件找不到，这个里面放的是mirror list。创建出来就可以了，具体的内容可以参照[这里](http://gardenyuan.iteye.com/blog/1498032)
 
