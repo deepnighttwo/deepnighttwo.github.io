@@ -8,8 +8,6 @@ tags: [linux, CentOS, virtual-box]
 ---
 {% include JB/setup %}
 
-{{ toc }}
-
 因为需要编译spark&shark，唤醒了沉睡许久的虚拟机。用的是VirtualBox，系统装的是centos6。唤醒之路记录一下……
 
 ### 密码
