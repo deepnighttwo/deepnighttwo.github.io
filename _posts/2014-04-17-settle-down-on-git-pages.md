@@ -3,10 +3,9 @@ layout: post
 title: "转战Git Pages"
 keywords: ["git pages"]
 description: "moving to git pages"
-category: misc
-tags: [git]
+category: default
+tags:     [git]
 ---
-{% include JB/setup %}
 
 ### 转战Git Pages
 
@@ -24,3 +23,4 @@ git page简直就是不二之选
 *   不怕文章审核，不怕被删除，一个无关痛痒的词都有可能被第三方博客管理系统给屏蔽，甚至无声无息的给删了我操
 *   markdown标记我很喜欢～
 
+{% include references.md %}

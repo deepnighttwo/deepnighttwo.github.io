@@ -3,10 +3,9 @@ layout: post
 title: "虚机复活记"
 keywords: ["linux,CentOS,virtual-box"]
 description: ""
-category: linux
+category: devtools
 tags: [linux, CentOS, virtual-box]
 ---
-{% include JB/setup %}
 
 因为需要编译spark&shark，唤醒了沉睡许久的虚拟机。用的是VirtualBox，系统装的是centos6。唤醒之路记录一下……
 
@@ -18,7 +17,7 @@ tags: [linux, CentOS, virtual-box]
 
 上网比较麻烦。因为是在公司内部，如果走网卡桥接，公司内部路由器不给上。所以走NAT，这时候走NAT无法从宿主机ssh连过去，这时候就要设置一个端口转发即可
 
-![nat-redirect]({{ IMAGE_PATH }}/nat-port-redirect.jpg)
+![nat-redirect](images/nat-port-redirect.jpg)
 
 默认ssh端口是22，防火墙是开了的。如果是别的端口就可能需要开防火墙了。iptables防火墙设置看[这里](http://my.oschina.net/blindcat/blog/169657)
 
@@ -37,4 +36,5 @@ removing mirrorlist with no valid mirrors: /var/cache/yum/x86_64/6/base/mirrorli
 除了这个文件，还有一个/var/cache/yum/x86_64/6/update/mirrorlist.txt，也需要一起改一下。
 
 到这里基本虚机就复活了～
+{% include references.md %}
 
