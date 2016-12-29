@@ -13,3 +13,5 @@
 [jslib-builder]: http://github.com/elfjs/jslib-builder/
 [Markdown]: http://daringfireball.net/projects/markdown/
 [WordPress]: http://wordpress.org/
+[严俊羿]: http://yanjunyi.com/
+[本站Jekyll主题SimpleGray]: https://github.com/mytharcher/SimpleGray

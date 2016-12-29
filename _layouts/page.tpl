@@ -72,6 +72,8 @@
 			<a href="http://softwaremaniacs.org/soft/highlight/en/">HighlightJS</a>,
 			<a href="https://github.com/mojombo/jekyll" target="_blank">jekyll</a>,
 			<a href="https://github.com/mytharcher/SimpleGray" target="_blank">SimpleGray</a>
+			<a href="http://yanjunyi.com/" target="_blank">严俊羿</a>
+			<a href="https://github.com/mytharcher/SimpleGray" target="_blank">本站Jekyll主题SimpleGray</a>
 		</p>
 	</div>
 </aside>

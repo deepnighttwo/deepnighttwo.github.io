@@ -3,9 +3,9 @@ permalink: /posts/:title.html
 exclude:
   - README.md
 
-name: DeepNightTwo's Site
+name: 深夜两点
 host: localhost
-desc: Deep Night Two.
+desc: 深夜两点的技术博客
 
 custom:
     category:
@@ -47,7 +47,7 @@ custom:
 
 meta:
     author:
-        name: DeepNightTwo
+        name: 深夜两点
         email: deepnighttwo@gmail.com
         disqus: your-disqus-short-name              # Disqus缩略标识
         gcse: 006032891784202562981:he3thw5c4uq     # Google自定义搜索标识ID
