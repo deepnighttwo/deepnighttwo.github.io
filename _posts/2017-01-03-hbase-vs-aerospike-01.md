@@ -108,22 +108,68 @@ HBase的另一个杀手锏功能就是协处理器，co-processor。简单来说
 
 HBase把数据排序，分为不同的Region（这个过程是动态的，开始可能只有一个Region），每个Region中的数据都是排序好的，每个Region对应着HDFS中的一个文件夹，文件夹中有这个Region相关的数据。任何一个RegionServer都可以读取这个文件夹的数据，然后就可以对外提供这个Region的服务（数据读写scan等）。
 
-HBase的两大法宝：scan和co-processor
+HBase的两大法宝：scan和co-processor。
 
 HBase的key设计很重要，要先把最重要的key放在前面。
+
+HBase可以支持非常大的数据量，几十几百T。
 
 
 # Aerospike
 
-Aerospike是一个纯粹的NoSQL服务。它有社区版和商业版，主要是管理工具和监控支持上的不同。
+Aerospike是一个纯粹的NoSQL服务。它有社区版和商业版，主要是管理工具和监控支持上的不同。它不依赖于其它生态系统，即装即用，可以集群，也可以单台。下文简称Aerospike为AS。
+
+## 存储的基本概念
+
+使用AS首先要创建至少一个Namespaece。一个namespace可以指定其rep count，使用的内存大小，存储方式是仅仅内存还是内存磁盘混合，TTL等。
+
+一个Namepsace会分为1024个partition。类似于HBase中的pre split。
+
+一个Namespace下可以有一个或多个Set。如果和数据库类比的话，Namespace类似于DB，Set类似于Table。
+
+要定位一条记录，需要namespace，set以及记录的key。
 
 
+## 关于Key的那些“奇葩”
+
+### Hash Key? Hash Key Only!
+
+Aerospike的一个特点就是使用Hash Key做为存储和查询的Key。和Java中的HashMap不一样的是，HashMap是会解决hash冲突的，而Aerospike不会。它假设不会冲突。具体可以参见我当时提的这个问题https://discuss.aerospike.com/t/what-will-aerospike-do-if-there-is-a-hash-collision-two-records-have-the-same-key/779
+
+简言之，AS会把Set和Key的名字作为输入，通过RIPEMD-160 hash算法得到一个20B的digest作为key。这个算法可以保证冲突的可能极为低。一个long是8个B，20个B已经是两个long外加4个B。可以相信如果hash算法足够好，确实可以有效避免冲突。
+
+还有，缺省AS也不会存储原始的key。
+
+### 所有的Key都在内存里
+
+是的，你没有看错。AS在启动的时候，会把key全部读到内存里，无论是不是用到。这个过程不是lazy loading。这带来的一个限制就是，一台机器／一个集群能存储多少条记录，可以根据内存大小算出来。因为一个key占用20 B，假设磁盘存储不是问题，总内存大小／20B就是这个集群／机器能容纳的总的记录数。
 
 ## UDF 
 
-## Key
+HBase有co-processor，可以把计算挪到服务器端。相应地AS也有UDF（User Defined Function），可以通过注册Lua脚本来实现server side computing。相比HBase，注入Lua脚本在实际操作上更简单灵活。
+
+## 集群
+
+AS的集群规模支持的数量不会太大。它有两种组集群的方式，一种最多支持一百多台，另一种稍多，但是也是百台规模。
+
+因为每个namespace都被分成了1024个partition，所以在集群状态下，这些partition被分配到不同的机器上。又因为AS的key是被hash过的，所以记录被均匀的分配到这些partition上。这样，AS巧妙的让整个集群每个机器的负载都很均匀。
+
+## CAP
+
+和HBase一样，AS对CAP的取舍也是CP。当一台机器宕机的时候，AS也需要一段时间才能恢复那台机器上的partition。尤其是AS底层没有hdfs这种网络存储，所以在一台机器宕机后，为了保证rep count，会有大量的数据拷贝。
+
+## 文档
+
+Aerospike的支持做的还是不错的，有问题直接去论坛问，不出一两天就会有专人回答。而且他们在stackoverflow上好像也有人值守，在上面提问，只要注明aerospike这个tag，也会有专人回答的。
+
+Aerospike的文档做的也不错，而且组织的很好，属于从入门到上手的。
+
+如果对AS有兴趣，在看过官方文档之后，可以看一遍我当时提的问题https://discuss.aerospike.com/users/deepnighttwo/activity/topics。
 
 
+## 总结
+
+AS在设计的理念上就是保持简单有效。相比之下，HBase在设计和概念上要比AS复杂的多。结果就是，HBase远不如AS稳定。AS把自己的优势做到最好，然后把不尝试用一些复杂／蹩脚／不稳定的设计去弥补这些不足。这样带来的好处就是，让AS成为一个很有针对性很有特点的NoSQL。这些特点里最重要的一个就是稳定。
 
 
 {% include references.md %}
