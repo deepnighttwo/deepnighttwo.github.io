@@ -71,6 +71,7 @@ HBase的key是一个byte[]，无论业务上想用什么做为key，最终都要
 ## CAP
 
 HBase对CAP的取舍是：
+
  - Consistency： Yes。因为HBase是支持WAL的，而且每个region是delegate给一个RegionServer的，所以consistency没问题。
  - Availability：No。因为同一个时间只有一个RegionServer提供服务，所以HBase的Availability不是满分，如果一个RegionServer宕机了，就要有别的RegionServer(s)把这台宕机的server上的Region一个个launch起来，然后更新meta表等等。
  - Partition Tolerance：Yes。因为一个时间只有一个RegionServer提供服务，所以，即使子网之间段时间的不通，也不影响集群提供服务。
