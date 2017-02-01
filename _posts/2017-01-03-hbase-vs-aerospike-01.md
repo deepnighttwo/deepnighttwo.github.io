@@ -41,7 +41,7 @@ HBase本身依托底层的HDFS作为存储。所以它自己是不处理存储�
 HBase在读写操作的时候，HBaseClient会缓存每个Region的start key 和 end key，同时也会缓存Region和RegionServer的对应关系。这样，在Client端读写时，就可以通过key算出Region，通过Region找到RegionServer，直接向这个RegionServer发起请求。当然这个对应关系是动态变化的，当Client发现server返回一个“我这儿没有这个key”的错误时，client就知道该去meta表刷新一下自己缓存的对应关系了。
 
 
-## Key的设计和scan
+## key的设计和scan
 
 HBase的key是一个byte[]，无论业务上想用什么做为key，最终都要转换为byte[]数组才能写入HBase。读取的时候也是一样的。
 
